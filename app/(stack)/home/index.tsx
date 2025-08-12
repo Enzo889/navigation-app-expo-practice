@@ -9,22 +9,22 @@ const HomeScreen = () => {
       <View className="flex flex-col gap-14 items-center justify-center">
         <Text className="text-primary-700 font-geist-mono-black text-xl text-center ">
           {" "}
-          Welcome to: THE ROMANCE AREA{" "}
+          El Area del Romance{" "}
         </Text>
         <View className="flex flex-col gap-4 items-center justify-center">
           <Link href="/stories" asChild>
             <CustomBtn color="primary" size="large" rounded="lg">
-              Stories
+              Historias
             </CustomBtn>
           </Link>
           <Link href="/movies" asChild>
             <CustomBtn color="secondary" size="large" rounded="lg">
-              Movies
+              Peliculas
             </CustomBtn>
           </Link>
           <Link href="/songs" asChild>
             <CustomBtn color="tertiary" size="large" rounded="lg">
-              Songs
+              Canciones
             </CustomBtn>
           </Link>
         </View>

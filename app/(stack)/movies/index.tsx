@@ -1,10 +1,7 @@
-import { Text, View } from "react-native";
+import CustomFlatList from "@/components/shared/CustomFlatList";
+import { romanticData } from "@/store/romantic.store";
 
 const MovieScreen = () => {
-  return (
-    <View>
-      <Text>Moviecreen</Text>
-    </View>
-  );
+  return <CustomFlatList data={romanticData.peliculas} />;
 };
 export default MovieScreen;
