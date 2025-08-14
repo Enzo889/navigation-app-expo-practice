@@ -39,7 +39,7 @@ const CustomBtn = ({
       onPress={onPress}
       className={`${btnColor} ${btnSize} ${btnRounded} ${className} items-center justify-center active:opacity-85  `}
     >
-      <Text className="text-white text-center"> {children} </Text>
+      <Text className="text-white text-center font-geist-mono-medium"> {children} </Text>
     </Pressable>
   );
 };
