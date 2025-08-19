@@ -10,14 +10,24 @@ const DrawerLayout = () => {
         overlayColor: "rgba(0, 0, 0, 0.5)", // Optional: Set a semi-transparent overlay color
         headerShadowVisible: false,
         drawerActiveTintColor: "#b91c1c",
+        drawerLabelStyle: {
+          fontFamily: "GeistMono-Medium",
+        },
+        headerTitleStyle: {
+          fontFamily: "GeistMono-Black",
+          color: "#b91c1c",
+        },
+        headerStyle: {
+          backgroundColor: "#fbcfe8",
+        },
       }}
     >
       <Drawer.Screen
         name="(tabs)" // This is the name of the page and must match the url from root
         options={{
           headerShown: false,
-          drawerLabel: "Home ",
-          title: "Homepage",
+          drawerLabel: "Inicio",
+          title: "Inicio",
           drawerIcon: ({ color, size }) => (
             <Ionicons size={size} name="home" color={color} />
           ),
@@ -28,19 +38,10 @@ const DrawerLayout = () => {
         name="info/index" // This is the name of the page and must match the url from root
         options={{
           drawerLabel: "Info",
-          title: "Info Page",
+
+          title: "Información",
           drawerIcon: ({ color, size }) => (
             <Ionicons size={size} name="information-circle" color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="settings/index" // This is the name of the page and must match the url from root
-        options={{
-          drawerLabel: "Settings",
-          title: "Settings Page",
-          drawerIcon: ({ color }) => (
-            <Ionicons size={24} name="settings" color={color} />
           ),
         }}
       />

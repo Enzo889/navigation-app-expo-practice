@@ -31,6 +31,35 @@ export interface RomanticData {
   peliculas: Pelicula[];
 }
 
+export const favorites: {
+  type: "peliculas" | "historias" | "canciones";
+  id: number;
+}[] = [];
+
+export function addFavorite(
+  type: "peliculas" | "historias" | "canciones",
+  id: number
+) {
+  if (!favorites.find((f) => f.type === type && f.id === id)) {
+    favorites.push({ type, id });
+  }
+}
+
+export function removeFavorite(
+  type: "peliculas" | "historias" | "canciones",
+  id: number
+) {
+  const idx = favorites.findIndex((f) => f.type === type && f.id === id);
+  if (idx !== -1) favorites.splice(idx, 1);
+}
+
+export function isFavorite(
+  type: "peliculas" | "historias" | "canciones",
+  id: number
+) {
+  return favorites.some((f) => f.type === type && f.id === id);
+}
+
 export const romanticData: RomanticData = {
   historias: [
     {

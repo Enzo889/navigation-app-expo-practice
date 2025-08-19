@@ -6,6 +6,9 @@ const TabsLayout = () => {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#b91c1c",
+        tabBarLabelStyle: {
+          fontFamily: "GeistMono-Medium",
+        },
         headerShown: false,
         tabBarStyle: {
           backgroundColor: "#fbcfe8",
@@ -15,7 +18,7 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="(stack)"
         options={{
-          title: "Home",
+          title: "Inicio",
           tabBarIcon: ({ color }) => (
             <Ionicons size={28} name="home" color={color} />
           ),
@@ -24,7 +27,7 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="favorites/index"
         options={{
-          title: "Settings",
+          title: "Favoritos",
           tabBarIcon: ({ color }) => (
             <Ionicons size={28} name="bookmark" color={color} />
           ),

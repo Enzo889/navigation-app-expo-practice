@@ -1,5 +1,12 @@
-import { romanticData, RomanticData } from "@/store/romantic.store";
-import { Stack, useLocalSearchParams, useNavigation } from "expo-router";
+import {
+  addFavorite,
+  isFavorite,
+  removeFavorite,
+  romanticData,
+  RomanticData,
+} from "@/store/romantic.store";
+import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
 
@@ -10,10 +17,25 @@ interface Props {
 }
 
 const CustomFlatListDetails = ({ type }: Props) => {
+  const [favorite, setFavorite] = React.useState(isFavorite(type, item?.id));
+
   const { id } = useLocalSearchParams();
   const navigation = useNavigation();
 
   const item = romanticData[type].find((i) => i.id.toString() === id);
+
+  useEffect(() => {
+    setFavorite(isFavorite(type, item?.id));
+  }, [item]);
+
+  const toggleFavorite = () => {
+    if (favorite) {
+      removeFavorite(type, item.id);
+    } else {
+      addFavorite(type, item.id);
+    }
+    setFavorite(!favorite);
+  };
 
   useEffect(() => {
     navigation.setOptions({
@@ -33,10 +55,17 @@ const CustomFlatListDetails = ({ type }: Props) => {
 
   return (
     <View className="p-4 gap-4 h-full w-full bg-tertiary-300">
-      <Stack.Screen options={{ title: `${type.toLocaleUpperCase()}` }} />
-      <Text className="text-2xl font-geist-mono-black text-secondary-800 ">
-        {item.title}
-      </Text>
+      <View className="flex-row justify-between items-center gap-2">
+        <Text className="text-2xl font-geist-mono-black text-secondary-800 ">
+          {item.title}
+        </Text>
+        <Ionicons
+          name={favorite ? "star" : "star-outline"}
+          onPress={toggleFavorite}
+          color={"#9d174d"}
+          size={22}
+        />
+      </View>
       <Text className=" font-geist-mono-medium text-secondary-800 ">
         {type === "peliculas" &&
           `Director: ${(item as RomanticData["peliculas"][0]).director}`}
