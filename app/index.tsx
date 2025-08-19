@@ -3,7 +3,7 @@ import { SafeAreaView, Text, View } from "react-native";
 
 const App = () => {
   Redirect({
-    href: "/home",
+    href: "/home", // Redirect to the info page by default
   });
 
   return (

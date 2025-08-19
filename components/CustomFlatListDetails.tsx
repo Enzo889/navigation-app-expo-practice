@@ -1,6 +1,6 @@
 import { romanticData, RomanticData } from "@/store/romantic.store";
-import { Stack, useLocalSearchParams } from "expo-router";
-import React from "react";
+import { Stack, useLocalSearchParams, useNavigation } from "expo-router";
+import React, { useEffect } from "react";
 import { Text, View } from "react-native";
 
 type DataType = "peliculas" | "historias" | "canciones";
@@ -11,8 +11,15 @@ interface Props {
 
 const CustomFlatListDetails = ({ type }: Props) => {
   const { id } = useLocalSearchParams();
+  const navigation = useNavigation();
 
   const item = romanticData[type].find((i) => i.id.toString() === id);
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: item?.title || type.toLocaleUpperCase(),
+    });
+  }, [item]);
 
   if (!item) {
     return (

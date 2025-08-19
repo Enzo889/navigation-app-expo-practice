@@ -15,18 +15,29 @@ const CustomFlatList = ({ data, className }: Props) => {
   if (!data || data.length === 0) {
     return (
       <View className="flex-1 justify-center items-center">
-        <Text className="text-primary-900">No se han encontrado datos avalibles</Text>
+        <Text className="text-primary-900">
+          No se han encontrado datos avalibles
+        </Text>
       </View>
     );
   }
 
   const handlePress = (item: any) => {
     if ("director" in item) {
-      router.push(`/movies/${item.id}`);
+      router.push({
+        pathname: "/movies/[id]",
+        params: { id: item.id.toString() },
+      });
     } else if ("artist" in item) {
-      router.push(`/songs/${item.id}`);
+      router.push({
+        pathname: "/songs/[id]",
+        params: { id: item.id.toString() },
+      });
     } else if ("author" in item) {
-      router.push(`/stories/${item.id}`);
+      router.push({
+        pathname: "/stories/[id]",
+        params: { id: item.id.toString() },
+      });
     }
   };
 
